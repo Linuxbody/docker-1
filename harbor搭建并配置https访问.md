@@ -1,7 +1,7 @@
 # harbor搭建并使用https访问
 > 依赖环境：  
 > docker版本 Docker version 18.06.1-ce  
-> docker-compose版本：docker-compose version 1.22.0
+>docker-compose版本 docker-compose version 1.22.0
 
 ## 安装docker
 ### 1.安装依赖包
