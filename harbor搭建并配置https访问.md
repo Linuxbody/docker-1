@@ -4,15 +4,15 @@
 > docker-compose版本：docker-compose version 1.22.0
 
 ## 安装docker
-### 1、安装依赖包
+### 1.安装依赖包
 ```
 yum install -y yum-utils device-mapper-persistent-data lvm2
 ```
-### 2、添加国内yum源
+### 2.添加国内yum源
 ```
 yum-config-manager --add-repo https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 ```
-### 3、更新yum软件源缓存，并安装docker-ce
+### 3.更新yum软件源缓存，并安装docker-ce
 ```
 yum makecache fast && yum install docker-ce
 ```
@@ -85,5 +85,5 @@ openssl req -newkey rsa:2048 -nodes -sha256 -keyout /data/cert/server.key -x509 
 ./prepare  
 - 安装harbor  
 ./install.sh      
-- 访问harbor
+- 访问harbor  
 在终端输入docker login elastic 或者在浏览器输入https://192.168.179.134都可以访问
