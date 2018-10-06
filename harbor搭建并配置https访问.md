@@ -86,4 +86,4 @@ openssl req -newkey rsa:2048 -nodes -sha256 -keyout /data/cert/server.key -x509 
 - 安装harbor  
 ./install.sh      
 - 访问harbor  
-在终端输入docker login elastic 或者在浏览器输入https://192.168.179.134都可以访问
+在终端输入docker login elastic 或者在浏览器输入https://yourself ip都可以访问
