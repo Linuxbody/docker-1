@@ -96,6 +96,12 @@ Username (admin): admin
 Password:
 Error response from daemon: Get https://zhouhua.zaizai.com/v2/: x509: certificate signed by unknown authority
 
-**解决**:  cp zhouhua.zaizai.com.crt /etc/docker/certs.d/zhouhua.zaizai.com/ca.crt 再次登陆就可以了
+解决:  cp zhouhua.zaizai.com.crt /etc/docker/certs.d/zhouhua.zaizai.com/ca.crt 再次登陆就可以了
 
 ```
+
+### 注意事项
+
++ 在打包镜像后，如果需要push到harbor，需要先去harborUI上创建项目，比如centos，打包的镜像为zhouhua.zaizai.com/centos/centos:20181018，然后push
++ 一定要做这一步：cp zhouhua.zaizai.com.crt /etc/docker/certs.d/zhouhua.zaizai.com/ca.crt
++ 其他服务器需要从harbor服务器pull镜像，/usr/lib/systemd/system/docker.service添加--insecure-registry zhouhua.zaizai.com(centos7这样做)
