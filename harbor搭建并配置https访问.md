@@ -3,6 +3,8 @@
 > docker版本 Docker version 18.06.1-ce  
 >docker-compose版本 docker-compose version 1.22.0
 
+**可参考**：https://www.58jb.com/html/117.html
+
 ## 安装docker
 ### 1.安装依赖包
 ```
@@ -80,6 +82,10 @@ ui_url_protocol = https      #设置使用https协议访问
 ```
 openssl req -newkey rsa:2048 -nodes -sha256 -keyout /data/cert/server.key -x509 -days 365 -out /data/cert/server.crt  
 #证书存放目录要和harbor.cfg文件里的配置相同
+或者使用下面这种来签署证书：
+openssl req -nodes -subj "/C=CN/ST=ChongQing/L=QianJiang/CN=zhouhua.zaizai.com" -newkey rsa:2048 -keyout zhouhua.zaizai.com.key -out zhouhua.zaizai.com.csr
+openssl x509 -req -days 3650 -in zhouhua.zaizai.com.csr -signkey zhouhua.zaizai.com.key -out zhouhua.zaizai.com.crt 
+openssl x509 -req -in zhouhua.zaizai.com.csr -CA zhouhua.zaizai.com.crt -CAkey zhouhua.zaizai.com.key -CAcreateserial -out zhouhua.zaizai.com.crt -days 10000 
 ```
 - 为harbor生成配置文件  
 ./prepare  
