@@ -87,3 +87,14 @@ openssl req -newkey rsa:2048 -nodes -sha256 -keyout /data/cert/server.key -x509 
 ./install.sh      
 - 访问harbor  
 在终端输入docker login elastic 或者在浏览器输入https://yourself ip都可以访问
+
+
+### 测试在harbor服务器登陆 我这里使用的是zhouhua.zaizai.com作为证书名字
+
+[root@ansible-k8s1 zhouhua.zaizai.com]# docker login zhouhua.zaizai.com
+Username (admin): admin
+Password:
+Error response from daemon: Get https://zhouhua.zaizai.com/v2/: x509: certificate signed by unknown authority
+**解决**:  cp zhouhua.zaizai.com.crt /etc/docker/certs.d/zhouhua.zaizai.com/ca.crt 再次登陆就可以了
+
+
