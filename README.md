@@ -12,7 +12,7 @@
 * 修改用户密码：curl -u "admin:Harbor12345" -X PUT -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/users/4/password" -d @uppwd.json
 * 查看项目相关角色：curl -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/projects/2/members/"
 * 项目添加角色：curl -u "jaymarco:Harbor123456" -X POST  -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/projects/2/members/" -d @role.json
-* 查看镜像：curl -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/repositories?project_id=2&q=centos%2Fcentos" 比如项目下有多少个镜像
+* 查看镜像：curl -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/repositories?project_id=2&q=centos%2Fcentos" 比如项目下数量
 * 删除镜像：curl -u "admin:Harbor12345" -X DELETE -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/repositories/testrepo%2Fcentos/tags/镜像标签"
 * 获取镜像标签：curl -s  -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/repositories/testrepo%2Fcentos/tags/" |grep "\"name\"" |awk -F"\\"" '{print $4}'
 
