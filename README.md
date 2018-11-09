@@ -1,5 +1,6 @@
 **利用Harbor Api处理镜像**：[参考链接](https://www.cnblogs.com/guigujun/p/8352983.html "参考链接")
 
+* **如果过程中遇到curl相关的问题，参考https://www.jb51.net/LINUXjishu/287588.html**
 * 获取项目信息：curl -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/projects/2" 2是项目ID
 * 获取所有项目信息：curl -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/projects?"
 * 搜索镜像：curl  -u "admin:Harbor12345"  -X GET -H "Content-Type: application/json" "https://zhouhua.zaizai.com/api/search?q=centos"
