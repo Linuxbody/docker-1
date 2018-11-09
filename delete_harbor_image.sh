@@ -7,7 +7,7 @@
 #### 项目个数
 lines=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "\"name\""|awk -F "\"" '{print $4}'|wc -l`
 ##### 展示当前有几个项目
-echo "当前Harbor有一下几个项目:"
+echo "当前Harbor有以下几个项目:"
 for i in $(seq 1 $lines)
 do
    ###########具体是啥项目
@@ -20,8 +20,8 @@ if [ $number -ge 1 -a $number -le $lines ]
 then
  #########选择的是哪个项目
  c=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "\"name\""|awk -F "\"" '{print $4}'|awk -v b=$number 'NR==b{print $1}'`
-
-  d=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "$c" -C 2 |grep "project_id" |awk '{print $2}' |awk -F "," '{print $1}'`
+#####多少个仓库
+ # d=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "$c" -C 2 |grep "project_id" |awk '{print $2}' |awk -F "," '{print $1}'`
   #echo "\$d-----------$d"
 ######显示仓库个数
  ## e=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories?project_id=$d" | grep "\"name\"" |awk -F "\"" '{print $4}' |awk -F "/" '{print $2}'|wc -l`
@@ -44,7 +44,10 @@ e=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "ht
 #     i=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories/$c%2F$h/tags/" |grep "\"name\"" |awk -F"\"" '{print $4}' | cut -c -6 |sort -n |uniq|wc -l`
     # echo $i
  #### 标签类型以及个数
+    echo "##################################"
     echo "镜像格式为：如果是10月，则为201810*"
+    echo "##################################"
+    #####每种镜像格式以及其数量
     curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories/$c%2F$h/tags/" |grep "\"name\"" |awk -F"\"" '{print $4}' | cut -c -6 |awk '{count[$1]++}END{for (i in count)print i,count[i]}'
  ######输入镜像格式，进行删除
      echo "如果想删除某种形式的镜像,请输入类型："
@@ -55,6 +58,7 @@ e=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "ht
     count_image=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories/$c%2F$h/tags/" |grep "\"name\"" |awk -F"\"" '{print $4}'|grep $image_format|wc -l`
     for image_label in $images
     do
+    #############执行删除
       curl -u "admin:Harbor12345" -X DELETE -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories/$c%2F$h/tags/$image_label"
     done
       if [ $? -eq 0 ]
