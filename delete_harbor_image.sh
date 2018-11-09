@@ -21,7 +21,7 @@ then
  #########选择的是哪个项目
  c=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "\"name\""|awk -F "\"" '{print $4}'|awk -v b=$number 'NR==b{print $1}'`
 #####多少个仓库
- # d=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "$c" -C 2 |grep "project_id" |awk '{print $2}' |awk -F "," '{print $1}'`
+  d=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/projects?" |grep "$c" -C 2 |grep "project_id" |awk '{print $2}' |awk -F "," '{print $1}'`
   #echo "\$d-----------$d"
 ######显示仓库个数
  ## e=`curl -s -u "admin:Harbor12345" -X GET -H "Content-Type: application/json" "https://harbor.k8stest.com/api/repositories?project_id=$d" | grep "\"name\"" |awk -F "\"" '{print $4}' |awk -F "/" '{print $2}'|wc -l`
