@@ -1,4 +1,4 @@
-### namespace
+### namespace 目的是实现轻量级虚拟化(容器)服务
 
 namespace|系统调用参数|隔离内容
 -|-|-
@@ -8,3 +8,5 @@ PID|CLONE_NEWPID|进程编号
 Network|CLONE_NEWNET|网络设备、网络线、端口等
 Mount|CLONE_NEWS|挂载点(文件系统)
 User|CLONE_NEWUSER|用户和用户组
+
+
