@@ -9,4 +9,10 @@ Network|CLONE_NEWNET|网络设备、网络线、端口等
 Mount|CLONE_NEWS|挂载点(文件系统)
 User|CLONE_NEWUSER|用户和用户组
 
+namespace的API包括clone()  setns() unshare() /proc下的部分文件
+
+* 通过clone()在创建新进程的同时创建namespace
+* 查看/proc/[pid]/ns文件
+* 通过unshare()在原先进程上进行namespace隔离
+* fork()系统调用
 
