@@ -16,3 +16,5 @@ namespace的API包括clone()  setns() unshare() /proc下的部分文件
 * 通过unshare()在原先进程上进行namespace隔离
 * fork()系统调用
 
+
+
