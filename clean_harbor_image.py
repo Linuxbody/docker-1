@@ -16,7 +16,7 @@ class Harbor_API:
         self.projects_url = 'https://xxx.xx.x.xxx/api/projects'
         self.repo_url = "https://xxx.xx.x.xxx/api/repositories?project_id="
         self.image_url = "https://xxx.xx.x.xxx/api/repositories/"
-        # "https://172.19.2.124/api/repositories/testrepo%2Fcentos/tags/
+        # "https://xxx.xx.x.xxx/api/repositories/testrepo%2Fcentos/tags/
         self.headers = {
             'Host':'xxx.xx.x.xxx',
             'Origin':'https://xxx.xx.x.xxx',
